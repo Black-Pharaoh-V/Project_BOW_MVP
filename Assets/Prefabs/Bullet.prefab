@@ -13,11 +13,11 @@ GameObject:
   - component: {fileID: 2387822}
   - component: {fileID: 13693818}
   - component: {fileID: 5409530}
+  - component: {fileID: -3558227822724622182}
   - component: {fileID: 10833074}
-  - component: {fileID: 11426614}
   - component: {fileID: -927890215427519120}
   m_Layer: 0
-  m_Name: CompleteShell
+  m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,7 +107,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 8192
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -137,11 +137,26 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
+--- !u!114 &-3558227822724622182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16a239744193fd54a8607e8c47040db7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionPrefab: {fileID: 195792, guid: 537afde59eeba4c82897def1dccfba0a, type: 3}
+  lifeTime: 1
+  damage: 10
 --- !u!108 &10833074
 Light:
   m_ObjectHideFlags: 0
@@ -207,27 +222,6 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
---- !u!114 &11426614
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 192454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af9894b7bced3a04c870ade3c621f94e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TankMask:
-    serializedVersion: 2
-    m_Bits: 512
-  m_ExplosionParticles: {fileID: 6950372259472959370}
-  m_ExplosionAudio: {fileID: 9184786572633591583}
-  m_MaxLifeTime: 2
-  m_MaxDamage: 100
-  m_ExplosionForce: 1000
-  m_ExplosionRadius: 5
 --- !u!114 &-927890215427519120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,18 +310,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 537afde59eeba4c82897def1dccfba0a, type: 3}
---- !u!198 &6950372259472959370 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 19807510, guid: 537afde59eeba4c82897def1dccfba0a, type: 3}
-  m_PrefabInstance: {fileID: 6950372259491175068}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6950372259491231702 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 486730, guid: 537afde59eeba4c82897def1dccfba0a, type: 3}
-  m_PrefabInstance: {fileID: 6950372259491175068}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &9184786572633591583 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: -6988948873659476605, guid: 537afde59eeba4c82897def1dccfba0a, type: 3}
   m_PrefabInstance: {fileID: 6950372259491175068}
   m_PrefabAsset: {fileID: 0}
