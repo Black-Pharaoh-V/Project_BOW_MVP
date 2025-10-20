@@ -100,19 +100,27 @@ public class PlayerWeaponController : MonoBehaviour
         }
     }
 
-    private void Fire()
+   private void Fire()
+{
+    if (bulletPrefab == null) return;
+
+    lastFireTime = Time.time;
+
+    GameObject b = Instantiate(bulletPrefab, firePoint.position, Quaternion.LookRotation(aimDirection));
+    Rigidbody rb = b.GetComponent<Rigidbody>();
+    if (rb != null) rb.linearVelocity = aimDirection * bulletSpeed;
+
+    // --- Add this ---
+    Bullet bulletScript = b.GetComponent<Bullet>();
+    if (bulletScript != null)
     {
-        if (bulletPrefab == null) return;
-
-        lastFireTime = Time.time;
-
-        GameObject b = Instantiate(bulletPrefab, firePoint.position, Quaternion.LookRotation(aimDirection));
-        Rigidbody rb = b.GetComponent<Rigidbody>();
-        if (rb != null) rb.linearVelocity = aimDirection * bulletSpeed;
-
-        float travelTime = Mathf.Max(0.05f, maxShootDistance / Mathf.Max(0.1f, bulletSpeed));
-        Destroy(b, travelTime + 0.2f);
+        bulletScript.SetOwnerTag("Player", 20, GetComponent<Collider>()); // Pass damage and player collider
     }
+
+    float travelTime = Mathf.Max(0.05f, maxShootDistance / Mathf.Max(0.1f, bulletSpeed));
+    Destroy(b, travelTime + 0.2f);
+}
+
 
     // Raycast from mouse to ground plane
     private Vector3 GetMouseWorldPointOnPlane(float y)
