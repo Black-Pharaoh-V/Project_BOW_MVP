@@ -28,6 +28,18 @@ public class Health : MonoBehaviour
         if (healthBar != null) healthBar.SetHealth(currentHealth);
 
         if (currentHealth <= 0) Die();
+        if (currentHealth <= 0)
+{
+    if (CompareTag("Player"))
+    {
+        GameManager.Instance.OnPlayerDied();
+    }
+    else if (CompareTag("Enemy"))
+    {
+        GameManager.Instance.OnEnemyDied();
+    }
+}
+
     }
 
     public void Heal(int amount)
