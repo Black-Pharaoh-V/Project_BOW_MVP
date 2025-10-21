@@ -44,7 +44,7 @@ This MVP version includes:
 ## 📖 Detailed Documentation
 
 For a more detailed guide, including images, videos, and insights about the project, check my blog:  
-[Project BOW Blog Documentation](YOUR_BLOGGER_LINK_HERE)
+[Project BOW Blog Documentation](https://playfullpyramid.blogspot.com/2025/10/project-bow.html)
 
 ---
 
