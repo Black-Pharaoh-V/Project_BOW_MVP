@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [Header("Delay Settings")]
     public float messageDisplayTime = 2f;
 
+    private int aliveEnemies;
     private bool gameEnded = false;
 
     void Awake()
@@ -24,6 +25,12 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        // Automatically find all enemies in the scene by tag
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        aliveEnemies = enemies.Length;
+
+        Debug.Log("Enemies found: " + aliveEnemies);
     }
 
     public void OnPlayerDied()
@@ -37,9 +44,16 @@ public class GameManager : MonoBehaviour
     public void OnEnemyDied()
     {
         if (gameEnded) return;
-        gameEnded = true;
-        ShowResultMessage("You Win!");
-        Invoke(nameof(LoadEndScene), messageDisplayTime);
+
+        aliveEnemies--;
+
+        // Check if all enemies are dead
+        if (aliveEnemies <= 0)
+        {
+            gameEnded = true;
+            ShowResultMessage("You Win!");
+            Invoke(nameof(LoadEndScene), messageDisplayTime);
+        }
     }
 
     private void ShowResultMessage(string message)
